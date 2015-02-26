@@ -3,15 +3,15 @@ describe Checkout do
   let(:basket)      { instance_double(Basket) }
   let(:product_one) { instance_double(Product) }
   let(:product_two) { instance_double(Product) }
-  let(:checkout)    { Checkout.new(:promotional_rules) }
+  let(:checkout)    { Checkout.new(:promotions) }
 
   before :each do
     checkout.scan(product_one)
   end
 
   context '#initialize' do
-    it 'with promotional rules' do
-      expect { checkout_two = Checkout.new(:promotional_rules) }.not_to raise_error
+    it 'with promotions' do
+      expect { checkout_two = Checkout.new(:promotions) }.not_to raise_error
     end
   end
 

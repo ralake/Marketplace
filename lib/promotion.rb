@@ -1,3 +1,5 @@
+require 'exceptions'
+
 class Promotion
 
   attr_reader :rules
@@ -8,8 +10,16 @@ class Promotion
   end
 
   def add_rule(options = {})
-    rule = options
-    @rules << rule
+    options.keys.each do |key|
+      if !rule_perameters.include?(key) then raise InvalidParameterError end
+    end    
+    @rules << options
+  end
+
+  private
+
+  def rule_perameters
+    [:name, :spend, :percent, :code, :price]
   end
 
 end
