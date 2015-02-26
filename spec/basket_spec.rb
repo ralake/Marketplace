@@ -1,9 +1,7 @@
-require './lib/basket'
-
 describe Basket do
 
   let(:basket)  { Basket.new } 
-  let(:product) { double :product }
+  let(:product) { instance_double(Product) }
   
   context '#initialze' do
 

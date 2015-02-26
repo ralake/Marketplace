@@ -1,5 +1,3 @@
-require './lib/product'
-
 describe Product do
 
   let(:product) { Product.new("Lavender Heart", 001, 9.25) }
