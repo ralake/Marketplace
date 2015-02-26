@@ -1,30 +1,29 @@
 describe Promotion do
 
-  let(:promotion) { Promotion.new }
+  let(:ten_percent_off) { Promotion.new }
+  let(:product_one)     { double :product, price: 70 }
+  let(:product_two)     { double :product, price: 30 }
 
-  context "can have rules added" do
-    it "for 10% off" do
-      promotion.add_rule(name: "10% off", spend: 60, percent: 0.9)
-      expect(promotion.rules[0][:name]).to eq "10% off"
-    end
-
-    it "for discounts on mulitple items" do
-      promotion.add_rule(name: "multiple items", code: '001', price: 8.50)
-      expect(promotion.rules[0][:code]).to eq '001'
-    end
+  before :all do
+    @rule = { name: "percentage discount", spend: 60, percent: 0.9 }
   end
 
-  context "will not add rules that it cannot recognise" do
-    it "will raise an error" do
-      expect { promotion.add_rule(name: "multiple items", code: '001', test: 'test') }
-        .to raise_error(InvalidParameterError)
-    end
+  it "adds rules with specific parameters" do
+    ten_percent_off.add_rule(@rule)
+    expect(ten_percent_off.rules).to eq @rule
+  end
+
+  it "will not add rules with invalid parameters" do
+    expect { ten_percent_off.add_rule(test: 'test') }.to raise_error(InvalidParameterError)
   end
 
   context "adjusts product prices" do
     it "when the total price is over a specific limit" do
-      promotion.add_rule(name: "10% off", spend: 60, percent: 0.9)
-
+      products = [product_one]
+      total = product_one.price
+      ten_percent_off.add_rule(@rule)
+      expect(product_one).to receive(:price=).and_return 36
+      ten_percent_off.apply_to(products, total)
     end
   end
   
