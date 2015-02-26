@@ -4,15 +4,15 @@ describe Product do
 
   context '#initialze' do
 
-    it "is initilaized with a name" do
+    it "with a name" do
       expect(product.name).to eq "Lavender Heart"
     end
 
-    it "is initalized with a product code" do
+    it "with a product code" do
       expect(product.code).to eq 001
     end
 
-    it "is initialized with a price" do
+    it "with a price" do
       expect(product.price).to eq 9.25
     end
 

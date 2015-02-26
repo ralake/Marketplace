@@ -5,6 +5,9 @@ describe Checkout do
   let(:product_two) { instance_double(Product) }
   let(:checkout)    { Checkout.new(:promotional_rules) }
 
+  before :each do
+    checkout.scan(product_one)
+  end
 
   context '#initialize' do
 
@@ -14,11 +17,21 @@ describe Checkout do
 
   end
 
-  context '#scan' do
+  context 'scans' do
 
     it 'a product' do
-      checkout.scan(product_one)
       expect(checkout.product_list).to eq [product_one]
+    end
+
+  end
+
+  context 'totals' do
+
+    it 'the price of all scanned products' do
+      checkout.scan(product_two)
+      allow(product_one).to receive(:price).and_return 5
+      allow(product_two).to receive(:price).and_return 6
+      expect(checkout.total).to eq 11
     end
 
   end

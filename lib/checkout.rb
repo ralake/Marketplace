@@ -11,4 +11,8 @@ class Checkout
     @product_list << product
   end
 
+  def total
+    prices = @product_list.map { |product| product.price }.inject(:+)
+  end
+
 end

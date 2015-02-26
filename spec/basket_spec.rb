@@ -11,9 +11,9 @@ describe Basket do
 
   end
 
-  context "adding and removing products" do
+  context "adds and removes products" do
 
-    it "can hold products" do
+    it "can add products" do
       basket.add(product)
       expect(basket.contents).to eq [product]
     end
