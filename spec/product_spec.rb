@@ -1,6 +1,6 @@
 describe Product do
 
-  let(:product) { Product.new("Lavender Heart", '001', 9.25) }
+  let(:product) { Product.new(name: "Lavender Heart", code: '001', price: 9.25) }
 
   context '#initialze' do
     it "with a name" do

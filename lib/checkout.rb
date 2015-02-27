@@ -3,7 +3,7 @@ class Checkout
   attr_reader :product_list
 
   def initialize(promotion)
-    @promotions = promotion
+    @promotion = promotion
     @product_list = []
   end
 
