@@ -10,7 +10,7 @@ describe 'Marketplace' do
     @co = Checkout.new(@promotional_rules)
   end
   
-  context "scenario one" do
+  context "test scenario one" do
     it "calculates the correct total for codes 001, 002, 003" do
       @basket.add(@item_one)
       @basket.add(@item_two)
@@ -20,7 +20,7 @@ describe 'Marketplace' do
     end
   end
 
-  context "scenario two" do
+  context "test scenario two" do
     it "calculates the correct total for codes 001, 003, 001" do
       @basket.add(@item_one)
       @basket.add(@item_three)
@@ -30,7 +30,7 @@ describe 'Marketplace' do
     end
   end
 
-  context "scenario three" do
+  context "test scenario three" do
     it "calculates the correct total for codes 001, 002, 001, 003" do
       @basket.add(@item_one)
       @basket.add(@item_two)

@@ -1,7 +1,5 @@
-require 'basket'
-require 'product'
-require 'checkout'
-require 'promotional_rules'
+cur_dir = File.dirname(File.absolute_path(__FILE__))
+Dir.glob(cur_dir + '/../lib/*', &method(:require))
 
 RSpec.configure do |config|
 
