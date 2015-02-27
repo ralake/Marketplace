@@ -3,19 +3,18 @@ describe Basket do
   let(:basket)  { Basket.new } 
   let(:product) { instance_double(Product) }
   
-  context '#initialze' do
-    it "is empty" do
-      expect(basket.contents).to eq []
-    end
+
+  it "initializes empty" do
+    expect(basket.contents).to eq []
   end
 
   context "adds and removes products" do
-    it "can add products" do
+    it "adds products" do
       basket.add(product)
       expect(basket.contents).to eq [product]
     end
 
-    it "can remove products" do
+    it "removes products" do
       basket.add(product)
       basket.remove(product)
       expect(basket.contents).to eq []
