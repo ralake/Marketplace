@@ -4,9 +4,7 @@ class Product
   attr_reader :name, :code
 
   def initialize(options = {})
-    @name = options.fetch(:name)
-    @code = options.fetch(:code)
-    @price = options.fetch(:price)
+    options.each { |parameter, value| instance_variable_set("@#{parameter}", value) }
   end
 
 end
