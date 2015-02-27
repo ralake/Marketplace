@@ -3,7 +3,7 @@ describe PromotionalRules  do
   let(:promotional_rules) { PromotionalRules.new({ spend_limit: 60,
                                                    percentage: 0.9,
                                                    code: '001',
-                                                   price: 8.50,
+                                                   new_price: 8.50,
                                                    quantity: 2 }) }
   let(:product_one)       { instance_double(Product) }
   let(:product_two)       { instance_double(Product) }
@@ -16,18 +16,9 @@ describe PromotionalRules  do
     allow(product_two).to receive(:price).and_return 9.25
   end
   
-  context "#initialize" do
-    it "with options for a percentage discount based on spend" do
-      expect(promotional_rules.spend_limit).to eq 60
-      expect(promotional_rules.percentage).to eq 0.9
-    end
-
-    it "with options for a mulit-buy discount for specific products" do
-      expect(promotional_rules.code).to eq '001'
-      expect(promotional_rules.price).to eq 8.50
-      expect(promotional_rules.quantity).to eq 2
-    end
-  end 
+  it "#initialize with options for discounts" do
+    expect { PromotionalRules.new({ spend_limit: 60, percentage: 0.9 }) }.not_to raise_error
+  end
 
   context "multi-buy discount" do
     it "is applied to products with a specific code and quantity" do

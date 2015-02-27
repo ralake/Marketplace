@@ -15,7 +15,7 @@ describe Checkout do
   end
 
   it 'scans a product' do
-    expect(checkout.product_list).to eq [product_one]
+    expect(checkout.products).to eq [product_one]
   end
 
   it 'totals the price of all scanned products' do

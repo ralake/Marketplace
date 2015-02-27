@@ -1,19 +1,19 @@
 class Checkout 
 
-  attr_reader :product_list
+  attr_reader :products
 
   def initialize(promotion)
     @promotion = promotion
-    @product_list = []
+    @products = []
   end
 
   def scan(product)
-    product_list << product
+    products << product
   end
 
   def total
-    @promotion.apply_to(product_list)
-    product_list.map { |product| product.price }.inject(:+).round(2)
+    @promotion.apply_to(products)
+    products.map { |product| product.price }.inject(:+).round(2)
   end
 
 end

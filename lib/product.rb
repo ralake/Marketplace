@@ -4,7 +4,7 @@ class Product
   attr_reader :name, :code
 
   def initialize(options = {})
-    options.each { |parameter, value| instance_variable_set("@#{parameter}", value) }
+    options.each { |variable, value| instance_variable_set("@#{variable}", value) }
   end
 
 end
