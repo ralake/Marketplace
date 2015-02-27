@@ -40,18 +40,26 @@ describe PromotionalRules  do
     end
 
     it "is not applied to products with the wrong code" do
-      expect(product_one).not_to receive(:price=).with 8.50
-      expect(product_two).not_to receive(:price=).with 8.50
+      expect(product_one).not_to receive(:price=)
+      expect(product_two).not_to receive(:price=)
       promotional_rules.apply_to(@products)
     end
   end
 
   context "percentage discount" do
-    it "applied when the total is above the limit set in the rules" do
+    it "is applied when the total is above the limit set in the rules" do
       allow(product_one).to receive(:price).and_return 40
       allow(product_two).to receive(:price).and_return 50
       expect(product_one).to receive(:price=).with 36
       expect(product_two).to receive(:price=).with 45
+      promotional_rules.apply_to(@products)
+    end
+
+    it "is not applied when the total is below the limit set in the rules" do
+      allow(product_one).to receive(:price).and_return 25
+      allow(product_two).to receive(:price).and_return 20
+      expect(product_one).not_to receive(:price=)
+      expect(product_two).not_to receive(:price=)
       promotional_rules.apply_to(@products)
     end
   end

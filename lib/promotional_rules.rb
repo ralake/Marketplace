@@ -8,9 +8,7 @@ class PromotionalRules
 
   def apply_to(products)
     multi_buy_discount(products)
-    if products.map { |product| product.price }.inject(:+) > spend_limit
-      products.each { |product| product.price = product.price * percentage }
-    end
+    percentage_discount(products)
   end
 
   private
@@ -18,6 +16,12 @@ class PromotionalRules
   def multi_buy_discount(products)
     if products.count { |product| product.code == code } >= quantity
       products.each { |product| product.price = price }
+    end
+  end
+
+  def percentage_discount(products)
+    if products.map { |product| product.price }.inject(:+) > spend_limit
+      products.each { |product| product.price = product.price * percentage }
     end
   end
 
