@@ -2,7 +2,6 @@ describe Basket do
 
   let(:basket)  { Basket.new } 
   let(:product) { instance_double(Product) }
-  
 
   it "initializes empty" do
     expect(basket.contents).to eq []
