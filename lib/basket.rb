@@ -9,7 +9,7 @@ class Basket
   end
 
   def remove(product)
-    @contents.delete(product)
+    contents.delete(product)
   end
 
 end
