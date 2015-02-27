@@ -5,8 +5,8 @@ describe PromotionalRules  do
                                                    code: '001',
                                                    price: 8.50,
                                                    quantity: 2 }) }
-  let(:product_one) { instance_double(Product) }
-  let(:product_two) { instance_double(Product) }
+  let(:product_one)       { instance_double(Product) }
+  let(:product_two)       { instance_double(Product) }
 
   before :each do
     @products = [product_one, product_two]

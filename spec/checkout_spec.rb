@@ -1,9 +1,10 @@
 describe Checkout do
 
-  let(:basket)      { instance_double(Basket) }
-  let(:product_one) { instance_double(Product) }
-  let(:product_two) { instance_double(Product) }
-  let(:checkout)    { Checkout.new(:promotional_rules) }
+  let(:basket)            { instance_double(Basket) }
+  let(:product_one)       { instance_double(Product) }
+  let(:product_two)       { instance_double(Product) }
+  let(:promotional_rules) { instance_double(PromotionalRules) }
+  let(:checkout)          { Checkout.new(promotional_rules) }
 
   before :each do
     checkout.scan(product_one)
@@ -21,6 +22,7 @@ describe Checkout do
     checkout.scan(product_two)
     allow(product_one).to receive(:price).and_return 5
     allow(product_two).to receive(:price).and_return 6
+    allow(promotional_rules).to receive(:apply_to)
     expect(checkout.total).to eq 11
   end
 

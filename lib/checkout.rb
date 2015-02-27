@@ -8,11 +8,12 @@ class Checkout
   end
 
   def scan(product)
-    @product_list << product
+    product_list << product
   end
 
   def total
-    @product_list.map { |product| product.price }.inject(:+)
+    @promotion.apply_to(product_list)
+    product_list.map { |product| product.price }.inject(:+).round(2)
   end
 
 end
