@@ -27,7 +27,6 @@ describe PromotionalRules  do
       expect(product_one).to receive(:price=).with 8.50
       expect(product_two).to receive(:price=).with 8.50
       promotional_rules.apply_to(@products)
-    
     end
 
     it "is not applied to products with the wrong code" do
